@@ -17,6 +17,7 @@ $font-text: 'Source Sans Pro', sans-serif;
 
 body {
   background: $color-light;
+  background-color: #cf6a87;
   font-family: $font-text;
   color: $color-dark;
   font-weight: 300;
@@ -30,10 +31,13 @@ body {
 }
 
 .section-title {
-  font-size: 22px;
+  font-size: 25px;
   text-transform: uppercase;
   font-family: $font-header;
   font-weight: 600;
+  color: #778beb;
+  text-align: center;
+  -webkit-text-stroke: 0.5px black;
   span {
     text-transform: none;
     font-weight: 400;
@@ -50,6 +54,7 @@ body {
 
 .sidebar {
   flex: 1 0 0;
+  text-align: center;
 }
 
 .posts {
@@ -60,7 +65,7 @@ body {
   background: $color-light;
   margin-right: 10px;
   padding: 40px;
-  border: 1px solid $color-dark;
+  border: 1px solid #fff;
   border-radius: 5px;
 }
 
@@ -72,6 +77,7 @@ body {
   font-size: 104px;
   line-height: 1;
   text-align: center;
+  color: #fff;
 }
 
 /* Lists */
@@ -80,14 +86,30 @@ body {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  .active {
-    font-weight: bold;
-  }
+}
+
+.list.titles li a {
+    color: #574b90;
+    text-decoration: none;
+    font-size: 20px;
+    &.active {
+        color: #f78fb3;
+        font-weight: bold;
+    }
+}
+
+.list.tags a {
+    color: #574b90;
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .list-horizontal {
   li {
     display: inline-block;
+    a {
+        text-decoration: none;
+    }
   }
 }
 
@@ -96,6 +118,10 @@ body {
 .authors {
   li {
     margin-bottom: 12px;
+  }
+  a {
+    text-decoration: none;
+    font-size: 18px;
   }
 }
 
