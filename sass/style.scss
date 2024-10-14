@@ -59,6 +59,8 @@ body {
 
 .posts {
   flex: 2 0 0;
+  position: relative;
+  display: grid;
 }
 
 .sidebar, .posts {
@@ -127,12 +129,19 @@ body {
 
 /* Post */
 
-.post {
-  display: none;
-  &.active {
-    display: block;
-  }
-}
+ .post {
+   z-index: 1;
+   height: 0;
+   opacity: 0;
+   grid-column: 1;
+   grid-row: 1;
+   transition: opacity 0.5s ease;
+   &.active {
+    height: auto;
+     z-index: 2;
+     opacity: 1;
+   } 
+ }
 
 .post-author {
   font-style: italic;
