@@ -38,6 +38,7 @@ body {
   color: #778beb;
   text-align: center;
   -webkit-text-stroke: 0.5px black;
+
   span {
     text-transform: none;
     font-weight: 400;
@@ -91,26 +92,28 @@ body {
 }
 
 .list.titles li a {
-    color: #574b90;
-    text-decoration: none;
-    font-size: 20px;
-    &.active {
-        color: #f78fb3;
-        font-weight: bold;
-    }
+  color: #574b90;
+  text-decoration: none;
+  font-size: 20px;
+
+  &.active {
+    color: #f78fb3;
+    font-weight: bold;
+  }
 }
 
 .list.tags a {
-    color: #574b90;
-    text-decoration: none;
-    font-size: 20px;
+  color: #574b90;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .list-horizontal {
   li {
     display: inline-block;
+
     a {
-        text-decoration: none;
+      text-decoration: none;
     }
   }
 }
@@ -121,6 +124,7 @@ body {
   li {
     margin-bottom: 12px;
   }
+
   a {
     text-decoration: none;
     font-size: 18px;
@@ -129,19 +133,20 @@ body {
 
 /* Post */
 
- .post {
-   z-index: 1;
-   height: 0;
-   opacity: 0;
-   grid-column: 1;
-   grid-row: 1;
-   transition: opacity 0.5s ease;
-   &.active {
+.post {
+  z-index: 1;
+  height: 0;
+  opacity: 0;
+  grid-column: 1;
+  grid-row: 1;
+  transition: opacity 0.5s ease;
+
+  &.active {
     height: auto;
-     z-index: 2;
-     opacity: 1;
-   } 
- }
+    z-index: 2;
+    opacity: 1;
+  } 
+}
 
 .post-author {
   font-style: italic;
@@ -149,6 +154,7 @@ body {
 
 .post-tags {
   display: flex;
+  
   p {
     margin: 0 10px 0 0;
   }
