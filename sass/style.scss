@@ -163,6 +163,14 @@ body {
 /* Media */
 @media (max-width: 767px) {
   .wrapper {
-    display: block;
+    flex-direction: column;
+  }
+
+  .posts {
+    order: 0;
+  }
+
+  .sidebar {
+    order: 1;
   }
 }
