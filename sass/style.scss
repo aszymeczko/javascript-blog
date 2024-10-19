@@ -93,6 +93,18 @@ body {
   a {
     padding: 6px;
     color: #574b90;
+
+    &.tag-size-1 {
+      font-size: 15px;
+    }
+
+    &.tag-size-3 {
+      font-size: 30px;
+    }
+
+    &.tag-size-5 {
+      font-size: 40px;
+    }
   }
 }
 
@@ -107,10 +119,13 @@ body {
   }
 }
 
+.list.tags {
+  display: inline-flex;
+}
+
 .list.tags a {
   color: #574b90;
   text-decoration: none;
-  font-size: 20px;
 }
 
 .list-horizontal {
