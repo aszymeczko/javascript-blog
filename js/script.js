@@ -53,7 +53,8 @@ const optArticleSelector = '.post',
   optArticleAuthorSelector = '.post-author',
   optTagsListSelector = '.tags.list',
   optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-';
+  optCloudClassPrefix = 'tag-size-',
+  optAuthorsListSelector = '.authors.list';
 
 
 
@@ -289,6 +290,9 @@ addClickListenersToTags();
 
 function generateAuthors() {
 
+  /* create a new variable allAuthors with an empty object */
+  let allAuthors = {};
+
   /* find all articles */
 
   const articles = document.querySelectorAll(optArticleSelector);
@@ -322,10 +326,40 @@ function generateAuthors() {
 
     // console.log(html);
 
+    /* check if this link is NOT already in allAuthors */
+    if (!allAuthors.hasOwnProperty(articleAuthors)) {
+
+      /* add author to allAuthors object */
+      allAuthors[articleAuthors] = 1;
+    } else {
+      allAuthors[articleAuthors]++;
+    }
+
     /* insert HTML of all the links into the tags wrapper */
 
     articleAuthorList.innerHTML = html;
   }
+
+  /* find list of authors in right column */
+  const authorList = document.querySelector(optAuthorsListSelector);
+  console.log('allAuthors', allAuthors);
+  const authorsParams = calculateTagsParams(allAuthors);
+  console.log('authorsParams: ', authorsParams);
+
+  /* create variable for all links HTML code */
+  let allAuthorsHTML = '';
+
+  /* for each author in allAuthors: */
+  for (let author in allAuthors) {
+
+    /* generate code of a link and add it to allAuthorsHTML */
+
+    const authorLinkHTML = `<li><a href="#author-${author}">${author} (${allAuthors[author]})</a></li>`;
+    allAuthorsHTML += authorLinkHTML;
+  }
+
+  /* add html from allTagsHTML to tagList */
+  authorList.innerHTML = allAuthorsHTML;
 }
 
 generateAuthors();
@@ -333,7 +367,7 @@ generateAuthors();
 
 function addClickListenersToAuthors() {
   /* find all links to authors */
-  const links = document.querySelectorAll('.post-author a');
+  const links = document.querySelectorAll('a[href^="#author-"]');
 
   /* for each link */
   for (let link of links) {

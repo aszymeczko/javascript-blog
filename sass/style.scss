@@ -96,14 +96,17 @@ body {
 
     &.tag-size-1 {
       font-size: 15px;
+      color: #e84393;
     }
 
     &.tag-size-3 {
       font-size: 30px;
+      color: #0984e3;
     }
 
     &.tag-size-5 {
       font-size: 40px;
+      color: #00b894;
     }
   }
 }
@@ -124,7 +127,6 @@ body {
 }
 
 .list.tags a {
-  color: #574b90;
   text-decoration: none;
 }
 
