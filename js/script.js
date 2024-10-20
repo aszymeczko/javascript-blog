@@ -1,5 +1,18 @@
 'use strict';
 
+const opts = {
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  articleAuthorSelector: '.post-author',
+  tagsListSelector: '.tags.list',
+  cloudClassCount: 5,
+  cloudClassPrefix: 'tag-size-',
+  authorsListSelector: '.authors.list',
+};
+
+
 function titleClickHandler(event) {
   event.preventDefault();
   const clickedElement = this;
@@ -43,32 +56,19 @@ function titleClickHandler(event) {
   /* add class 'active' to the correct article */
 
   targetArticle.classList.add('active');
-
 }
-
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optArticleAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = 5,
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.authors.list';
-
-
 
 function generateTitleLinks(customSelector = '') {
 
   /* remove contents of titleList */
 
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(opts.titleListSelector);
 
   titleList.innerHTML = '';
 
   /* find all the articles and save them to variable: articles */
 
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.articleSelector + customSelector);
 
   let html = '';
 
@@ -81,7 +81,7 @@ function generateTitleLinks(customSelector = '') {
     /* find the title element */
     /* get the title from the title element */
 
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
 
     /* create HTML of the link */
 
@@ -129,8 +129,8 @@ function calculateTagsParams(tags) {
 
 function calculateTagClass(count, params) {
   const normalizedCount = (count - params.min) / (params.max - params.min);
-  const classNumber = Math.floor(normalizedCount * (optCloudClassCount - 1) + 1);
-  return optCloudClassPrefix + classNumber;
+  const classNumber = Math.floor(normalizedCount * (opts.cloudClassCount - 1) + 1);
+  return opts.cloudClassPrefix + classNumber;
 }
 
 function generateTags() {
@@ -139,13 +139,13 @@ function generateTags() {
   let allTags = {};
 
   /* find all articles */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
 
   /* for every article: */
   for (let article of articles) {
 
     /* find tags wrapper */
-    const articleTagsList = article.querySelector(optArticleTagsSelector);
+    const articleTagsList = article.querySelector(opts.articleTagsSelector);
 
     /* make html variable with empty string */
     let html = '';
@@ -190,7 +190,7 @@ function generateTags() {
   }
 
   /* find list of tags in right column */
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector(opts.tagsListSelector);
   console.log('allTags', allTags);
   const tagsParams = calculateTagsParams(allTags);
   console.log('tagsParams: ', tagsParams);
@@ -295,14 +295,14 @@ function generateAuthors() {
 
   /* find all articles */
 
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
 
   /* for every article: */
   for (let article of articles) {
 
     /* find authors wrapper */
 
-    const articleAuthorList = article.querySelector(optArticleAuthorSelector);
+    const articleAuthorList = article.querySelector(opts.articleAuthorSelector);
 
     /* make html variable with empty string */
 
@@ -341,7 +341,7 @@ function generateAuthors() {
   }
 
   /* find list of authors in right column */
-  const authorList = document.querySelector(optAuthorsListSelector);
+  const authorList = document.querySelector(opts.authorsListSelector);
   console.log('allAuthors', allAuthors);
   const authorsParams = calculateTagsParams(allAuthors);
   console.log('authorsParams: ', authorsParams);
